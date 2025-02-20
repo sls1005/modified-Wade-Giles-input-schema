@@ -1,0 +1,206 @@
+# License: MIT
+schema:
+  schema_id: modified_wade_giles
+  name: 威式拼音修訂版
+  author:
+    - sls1005
+  version: "0.1"
+  description: |
+    An input schema based on (modified) Wade–Giles romanization.
+  dependencies:
+    - terra_pinyin
+
+switches:
+  - name: ascii_mode
+    states: [Sinographs, Latin]
+  - name: full_shape
+    states: [Halfwidth, Fullwidth]
+  - options: [zh_hans, zh_hant, zh_hant_hk, zh_hant_tw]
+    states: [Simp., Trad., HK, TW]
+
+engine:
+  processors:
+    - ascii_composer
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - echo_translator
+    - punct_translator
+    - script_translator
+  filters:
+    - simplifier@zh_hans
+    - simplifier@zh_hant_hk
+    - simplifier@zh_hant_tw
+    - uniquifier
+
+speller:
+  alphabet: "acefhijklmnoprstuvwyz'12345bdgqx"
+  initials: "abcdefghijklmnopqrstuvwxyz'"
+  algebra: # line order matters
+    - xform/p/p'/
+    #- xform/b/p/
+    - derive/b/p/
+    #- xform/ci/tz'u/
+    - derive/ci/tz'u/
+    - derive/ci/ts'u/ # nonstandard
+    #- xform/(d|t|n|l|zh?|ch?|s|r)uo/$1o/
+    - derive/(d|t|n|l|zh?|ch?|s|r)uo/$1o/ # requires further processing
+    #- xform/^c([^i])/ts'$1/
+    - derive/^c([^hi])/ts'$1/
+    #- xform/(zh|ch|sh|r)i([^a-z])/$1ih$2/
+    - derive/([csz]h|r)i([^a-z])/$1ih$2/ # requires further processing
+    - xform/^t([^sz])/t'$1/
+    - derive/ts'/t's/ # nonstandard
+    - derive/tz'/t'z/ # nonstandard
+    #- xform/d/t/
+    - derive/d/t/
+    - xform/k/k'/
+    #- xform/^g/k/
+    - derive/^g/k/
+    - xform/ch/ch'/ # should be transformed before j and z.
+    - xform/ji/chi/
+    - derive/ju/jv/ # nonstandard in both Wade-Giles and Pinyin, but a combination of both. A shortcut for chü (ju). Because 'ju' is 'ru' and 'chv' requires three letters
+    - xform/ju/chv/
+    #- xform/^rih/jih/
+    - derive/^rih/jih/
+    #- xform/r([^i])/j$1/
+    - derive/^r([^0-9i])/j$1/
+    #- xform/q/ch'/
+    - derive/qi/ch'i/
+    - derive/qu/ch'v/
+    - derive/qu/qv/ # nonstandard; 容錯
+    - derive/ch'/c'h/ # nonstandard
+    #- xform/^si/ssu/
+    - derive/^si/ssu/
+    - derive/^si/szu/
+    #- xform/x/hs/
+    - derive/xi/hsi/
+    - derive/xu/hsu/ # nonstandard but common
+    - derive/xu/hsv/
+    - derive/xu/xv/ # nonstandard; 容錯
+    #- xform/zh/ch/
+    - derive/zh/ch/
+    #- xform/^zi/tzu/
+    - derive/^zi/tzu/
+    - derive/^zi/tsu/ # nonstandard
+    #- xform/^z([^hi])/ts$1/
+    - derive/^z([^hi])/ts$1/
+    #- xform/(i|u|v)e([^a-z])/$1eh$2/
+    - derive/([iuv])e([^a-z])/$1eh$2/ # [^a-z] means the tone indicator
+    #- xform/ian([^a-z])/ien$1/
+    - derive/ian([^a-z])/ien$1/
+    - derive/^yu/yv/ # yü is correct Wade-Giles except in 'yung'. So this must be before ong/ung (yong/yung)
+    #- xform/ong([^a-z])/ung$1/
+    - derive/ong([^a-z])/ung$1/
+    - derive/^you([^a-z])/yu$1/
+    #- xform/^yi([^a-z])/i$1/
+    - derive/^yi([^a-z])/i$1/
+    #- xform/^yan([^a-z])/yen$1/
+    - derive/^yan([^a-z])/yen$1/
+    - derive/er([^a-z])/erh$1/
+    - derive/^([kp]|ch|t[sz]?)'([a-z]+)([^a-z])/$1$2'$3/ # nonstandard
+    - abbrev/^([kp]|ch|t[sz]?)('?)[a-z]+([^a-z])/$1$2$3/
+    - abbrev/^([kp]|ch|t[sz]?)'[a-z]+([^a-z])/$1$2/
+    - abbrev/^([sz]h)[a-z]+([^a-z])/$1$2/
+    - abbrev/^(c[^'h]|s[^'h]|z[^'h]|[abdefghijlmnoqrwxy])[a-z]+([^a-z])/$1$2/
+    - abbrev/shou/sho/
+    - abbrev/ei/e/
+    - abbrev/^(.+)[0-9]/$1/
+  use_space: false
+
+translator:
+  dictionary: terra_pinyin
+  prism: modified_wade_giles
+  preedit_format:
+    - xlit/v/ü/
+  comment_format:
+    - xform/(d|t|n|l|zh?|ch?|s|r)uo/$1o/
+    - xform/([csz]h|r)i([^a-z])/$1ih$2/ 
+    - xform/p/p'/
+    - xform/b/p/
+    - xform/t/t'/
+    - xform/d/t/
+    - xform/k/k'/
+    - xform/\bg/k/
+    - xform/ch/ch'/
+    - xform/ji/chi/
+    - xform/j([uv])/chv/
+    - xform/qi/ch'i/
+    - xform/q([uv])/ch'v/
+    - xform/xi/hsi/
+    - xform/x[uv]/hsv/
+    - xform/zh/ch/
+    - xform/\brih/jih/
+    - xform/\br([^0-9i])/j$1/
+    - xform/\bzi/tzu/
+    - xform/\bz([^hi])/ts$1/
+    - xform/ci/tz'u/
+    - xform/\bc([^hi])/ts'$1/
+    - xform/\bsi/ssu/
+    - xform/([kp]|ch|t[sz]?)('?)e([^i])/$1$2ê$3/
+    - xform/([mfnlhj]|sh?)e([^i])/$1ê$2/
+    - xform/([iuv])e([^a-z])/$1eh$2/
+    - xform/ian([^a-z])/ien$1/
+    - xform/\byi([^a-z])/i$1/
+    - xform/\byan([^a-z])/yen$1/
+    - xform/\byu/yv/
+    - xform/\byou([^a-z])/yu$1/
+    - xform/ong([^a-z])/ung$1/
+    - xlit/v/ü/
+  spelling_hints: 3
+
+punctuator:
+  import_preset: default
+  full_shape:
+    ' ' : {commit: ' '}
+    "'": ['‘’', '「」']
+    '"' : ['“”', '『』']
+    '[' : ['「', '『', '［', '【']
+    ']' : ['」', '』', '］', '】']
+    '{' : ['〈', '《', '｛']
+    '}' : ['〉', '》', '｝']
+    '`' : [、, ｀, '·', '・', '…'] # Warning: the second dot is the katakana middle dot.
+    '+' : [＋, ±]
+    '=' : [＝, '=', ≠, ≈, ≒, ≡]
+    '^' : [＾, Δ, △]
+
+  half_shape":
+    ' ' : {commit: ' '}
+    "'" : {commit: "'"}
+    '"' : {commit: '"'}
+    '[' : ['[', '｢']
+    ']' : [']', '｣']
+    '{' : '{'
+    '}' : '}'
+    '`' : ['`', '､', '·', '…']
+    '^' : '^'
+
+editor:
+  bindings:
+    Return: confirm
+
+zh_hans:
+  option_name: zh_hans
+  opencc_config: t2s.json
+  tags: [abc]
+  tips: none
+
+zh_hant_hk:
+  option_name: zh_hant_hk
+  opencc_config: t2hk.json
+  tags: [abc]
+  tips: none
+
+zh_hant_tw:
+  option_name: zh_hant_tw
+  opencc_config: t2tw.json
+  tags: [abc]
+  tips: none
