@@ -39,7 +39,7 @@ No, you generally don't need it unless your keyboard lacks `B`, `Q` or `X`. The 
 
 * Use tone-indicators (numbers 1 to 5) to split syllables. Apostrophes, as explained above, can't be used for it (despite allowed in Wade–Giles).
 
-* The use of an apostrophe (for aspiration) is sometimes enforced in this schema. However, for ease of inputting, its positions, as described above, is not strictly defined (in this schema). Allowed placements including:
+* The use of an apostrophe (for aspiration) is sometimes enforced in this schema. However, for ease of inputting, its positions, as described above, is not strictly defined (in this schema). Allowed placements include:
 
     * (standard) between the last initial consonant letter and the first vowel letter, e.g., `tz'u`.
 
