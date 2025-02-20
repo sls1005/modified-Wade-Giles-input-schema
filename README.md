@@ -45,7 +45,7 @@ No, you generally don't need it unless your keyboard lacks `B`, `Q` or `X`. The 
 
     * (nonstandard) between two initial consonant letters, e.g., `t'zu`.
 
-    * (nonstandard) after the last of the final letters, whatever it is, e.g., `tzu'`.
+    * (nonstandard) after the last of the final letters but before the tone-indicator, e.g., `tzu'`, `tzu'3`.
 
 * The functions of several keys are redefined. Both the space key and the return/enter key will confirm selection.
 
