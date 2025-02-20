@@ -4,7 +4,7 @@ schema:
   name: 威式拼音修訂版
   author:
     - sls1005
-  version: "0.1"
+  version: "0.2"
   description: |
     An input schema based on (modified) Wade–Giles romanization.
   dependencies:
@@ -66,7 +66,8 @@ speller:
     #- xform/^g/k/
     - derive/^g/k/
     - xform/ch/ch'/ # should be transformed before j and z.
-    - xform/ji/chi/
+    #- xform/ji/chi/
+    - derive/ji/chi/
     - derive/ju/jv/ # nonstandard in both Wade-Giles and Pinyin, but a combination of both. A shortcut for chü (ju). Because 'ju' is 'ru' and 'chv' requires three letters
     - xform/ju/chv/
     #- xform/^rih/jih/
