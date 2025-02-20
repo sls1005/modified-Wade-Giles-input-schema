@@ -15,7 +15,7 @@ As described above, the rules are relatively loose comparing to the original sys
 
 ### What's the point of this?
 
-It allows you to enter `易經`/`易经` by typing `i ching`, which is in correct Wade–Giles.
+It allows you to enter `易經`/`易经` by typing `i ching`, which is correct Wade–Giles.
 
 As a system for romanization, Wade–Giles is really not good. (It would not be discarded otherwise.) But using something as an input method is different from using it to (directly) communicate with other people or make documents. Its confusingness is almost not a problem here, as whatever you type will not be directly stored but converted to another kind of characters.
 
@@ -41,9 +41,9 @@ No, you generally don't need it unless your keyboard lacks `B`, `Q` or `X`. The 
 
 * The use of an apostrophe (for aspiration) is sometimes enforced in this schema. However, for ease of inputting, its positions, as described above, is not strictly defined (in this schema). Allowed placements include:
 
-    * (standard) between the last initial consonant letter and the first vowel letter, e.g., `tz'u`.
+    * (standard) between the last initial consonant letter and the first vowel letter, e.g., `tz'u`;
 
-    * (nonstandard) between two initial consonant letters, e.g., `t'zu`.
+    * (nonstandard) between two initial consonant letters, e.g., `t'zu`;
 
     * (nonstandard) after the last of the final letters but before the tone-indicator, e.g., `tzu'`, `tzu'3`.
 
@@ -55,7 +55,7 @@ No, you generally don't need it unless your keyboard lacks `B`, `Q` or `X`. The 
 
 ### Tips
 
-* Not all keys on the keyboard are required when using this schema, so you don't have to remember the whole keyboard in order to use it (even if you can remember, your speed of inputting will not get increased when using this schema). Don't try to use all the keys of the keyboard; find the positions of the most used keys (usually `C`, `H`, `T`, `S`, `'` (apostrophe) and vowels) and focus on them!
+* Not all keys on the keyboard are required when using this schema, so you don't have to remember the whole keyboard in order to use it (even if you can remember, your speed of inputting will not get increased when using this schema). Don't try to use all keys of the keyboard; find the positions of the most used keys (usually `C`, `H`, `T`, `S`, `'` (apostrophe) and vowels) and focus on them!
 
 * Using only a part of the keyboard and further relying heavily on some of the keys (which is just what this schema does) implies low information entropy. Don't try to select each individual letter; type more letters and use the context to filter them (and then delete additional letters if any).
 
