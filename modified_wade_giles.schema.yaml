@@ -4,7 +4,7 @@ schema:
   name: 威式拼音修訂版
   author:
     - sls1005
-  version: "0.2"
+  version: "0.3"
   description: |
     An input schema based on (modified) Wade–Giles romanization.
   dependencies:
@@ -108,6 +108,7 @@ speller:
     - derive/^yan([^a-z])/yen$1/
     - derive/er([^a-z])/erh$1/
     - derive/^([kp]|ch|t[sz]?)'([a-z]+)([^a-z])/$1$2'$3/ # nonstandard
+    - derive/^([kp]|ch|t[sz]?)'([a-z]+[^a-z])/$1$2'/ # nonstandard
     - abbrev/^([kp]|ch|t[sz]?)('?)[a-z]+([^a-z])/$1$2$3/
     - abbrev/^([kp]|ch|t[sz]?)'[a-z]+([^a-z])/$1$2/
     - abbrev/^([sz]h)[a-z]+([^a-z])/$1$2/

@@ -41,11 +41,13 @@ No, you generally don't need it unless your keyboard lacks `B`, `Q` or `X`. The 
 
 * The use of an apostrophe (for aspiration) is sometimes enforced in this schema. However, for ease of inputting, its positions, as described above, is not strictly defined (in this schema). Allowed placements include:
 
-    * (standard) between the last initial consonant letter and the first vowel letter, e.g., `tz'u`;
+    * (standard) between the last initial consonant letter and the first vowel letter, e.g., `tz'u`
 
-    * (nonstandard) between two initial consonant letters, e.g., `t'zu`;
+    * (nonstandard) between two initial consonant letters, e.g., `t'zu`
 
-    * (nonstandard) after the last of the final letters but before the tone-indicator, e.g., `tzu'`, `tzu'3`.
+    * (nonstandard) after the last of the final letters but before the tone-indicator, e.g., `tzu'` (meaning `tz'u` (Wade–Giles), `ci` (Pinyin)), `tzu'3` (meaning `tz'u3` (Wade–Giles), `cǐ` (Pinyin))
+
+    * (nonstandard) after the tone-indicator, e.g., `tzu3'` (meaning `tz'u3` (Wade–Giles), `cǐ` (Pinyin))
 
 * The functions of several keys are redefined. Both the space key and the return/enter key will confirm selection.
 
