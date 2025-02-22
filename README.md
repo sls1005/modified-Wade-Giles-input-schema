@@ -2,7 +2,7 @@
 
 ### What is this?
 
-An input schema for [rime](https://github.com/rime/home). This is based on a modified version of [Wade–Giles romanization](https://www.britannica.com/topic/Wade-Giles-romanization).
+An input schema for [Rime](https://github.com/rime/home). This is based on a modified version of [Wade–Giles romanization](https://www.britannica.com/topic/Wade-Giles-romanization).
 Letters like `b`, `q`, `x` (and also `g` or `r` at beginning) are not used in that (unmodified) system, so they will behave the same as if in Pinyin, and so will Pinyin-style letter combinations if not causing conflicts.
 
 For example, `思` may be input by typing `si`, `ssu` or `szu`, while `z` (in other combinations) will usually mean the same as `ts` or `tz`.
